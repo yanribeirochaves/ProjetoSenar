@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenarDigital.Telas.Projetos">
+    <ContentPage.Title>
+        Projetos
+    </ContentPage.Title>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#ecf8f7">
+            <StackLayout x:Name="ListaVazia" VerticalOptions="CenterAndExpand">
+                <Label Text="Ooops ... Parece que você ainda não tem nenhum curso iniciado" HorizontalOptions="Center"/>
+                <Label Text="" />
+                <Button Text="iniciar" Clicked="IniciarCurso" TextColor="White" BackgroundColor="#6bcd20" HorizontalOptions="Center"/>
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="" />
+            </StackLayout>
+            <StackLayout IsVisible="False" x:Name="ListaCursosStack">
+                <!-- Lista de cursos -->
+                <ListView x:Name="ListaDeCurso">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HeightRequest="50" Margin="5" Orientation="Vertical" BackgroundColor="White">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding nome}" />
+                                        <Label Text=" - " />
+                                        <Label Text="{Binding codigo}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--Termino de lista cursos-->
+                <Image HeightRequest="50" WidthRequest="50" HorizontalOptions="End">
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <On Platform="Android, iOS" Value="mais.png"/> 
+                            <On Platform="UWP" Value="Resources/mais.png" />
+                        </OnPlatform>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="IniciarMais" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

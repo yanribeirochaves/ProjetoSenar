@@ -1,0 +1,9 @@
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\bin\Debug\netstandard2.0\SenarDigital.deps.json
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\bin\Debug\netstandard2.0\SenarDigital.dll
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\bin\Debug\netstandard2.0\SenarDigital.pdb
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.csprojAssemblyReference.cache
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.csproj.CoreCompileInputs.cache
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.AssemblyInfoInputs.cache
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.AssemblyInfo.cs
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.dll
+C:\Users\yanri\Desktop\Projetos\ProjetoAplicativo\Projeto Visual Studio\SenarDigital\SenarDigital\SenarDigital\obj\Debug\netstandard2.0\SenarDigital.pdb

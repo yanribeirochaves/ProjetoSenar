@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenarDigital.Telas.AdicionarCurso">
+    <ContentPage.Title>
+        Adicionar Projetos
+    </ContentPage.Title>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#dfece9" Spacing="20">
+            <!--stacklayout CursoVazio para quando o curso não tiver sido preenchido -->
+            <StackLayout x:Name="CursoVazio">
+                <Label Text="curso" TextColor="#294a8d"  HorizontalOptions="Center"/>
+                <!--Posteriormente, cadastrar no picker usando banco de dados-->
+                <Picker x:Name="EntradaNomeCurso" SelectedIndex="0" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Escolha o projeto</x:String>
+                        <x:String>Artefatos artesanais para datas comemorativas - Técnincas</x:String>
+                        <x:String>Bovinocultura de corte - Confinamento</x:String>
+                        <x:String>Cavalgada Rural</x:String>
+                        <x:String>Florestamento - Recomposição de área de preservação permanente</x:String>
+                        <x:String>Fruticultura básica - Instalação da Lavoura</x:String>
+                        <x:String>Jardineiro - Condução, manutenção e reforma</x:String>
+                        <x:String>Meliponicutura - Criação de abelhas sem ferrão</x:String>
+                        <x:String>Operação de manutenção de tratores agrícolas</x:String>
+                        <x:String>Processamento de tomate</x:String>
+                        <x:String>Seleiro</x:String>
+                        <x:String>Apicultura - Sensibilização</x:String>
+                    </Picker.Items>
+                </Picker>
+                <!--<Entry x:Name="EntradaNomeCurso" Placeholder="Nome do projeto" HorizontalTextAlignment="Center" WidthRequest="10" />-->
+
+                <Label Text="número do projeto" TextColor="#294a8d" HorizontalOptions="Center"/>
+                <Entry x:Name="EntradaCodigoCurso" Placeholder="0000-000" HorizontalTextAlignment="Center" WidthRequest="10"/>
+
+                <!--mudar variaveis-->
+                <Label Text="sindicato rural / instituição" TextColor="#294a8d" HorizontalOptions="Center"/>
+                <!--<Entry x:Name="EntradaSindicatoCurso" Placeholder="Cidade do Sindicato" HorizontalTextAlignment="Center" WidthRequest="10"/>-->
+                <!--Posteriormente, cadastrar no picker usando banco de dados-->
+                <Picker x:Name="EntradaSindicatoCurso" SelectedIndex="0" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Escolha o sindicato / instituição</x:String>
+                        <x:String>São José dos Campos</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="quantidade de dias do projeto" TextColor="#294a8d" HorizontalOptions="Center"/>
+                <Entry x:Name="EntradaQuantDiasCurso" Placeholder="Cidade do Sindicato" HorizontalTextAlignment="Center" WidthRequest="10"/>
+
+                <Button Text="adicionar" Clicked="AdicionarCursos" TextColor="White" BackgroundColor="#6bcd20" HorizontalOptions="Center" />
+            </StackLayout>
+
+            <!--stacklayout para quando o curso tiver sido preenchidos-->
+            <StackLayout IsVisible="False" x:Name="CursoPreenchido" BackgroundColor="White" Margin="20">
+                <!--2 labels de nome e codigo uma em baixo da outra-->
+                <Label x:Name="NomeCursoCadastrado" Text="Nome do curso" TextColor="#4b5668" />
+                <Label x:Name="CodigoCursoCadastrado" Text="0000-0000" TextColor="#4b5668"/>
+                <!--stack layout contendo 2 botoes um ao lado do outro-->
+                <StackLayout Orientation="Horizontal">
+                    <!--<Button Text="editar" Clicked="EditarCurso" TextColor="White" BackgroundColor="#6bcd20" />-->
+                    <Image HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <On Platform="Android, iOS" Value="buttonEditar.png"/>
+                                <On Platform="UWP" Value="Resources/buttonEditar.png" />
+                            </OnPlatform>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EditarCurso" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <!--<Button Text="remover" Clicked="RemoverCurso"  TextColor="White" BackgroundColor="#fc2e43"/>-->
+                    <Image HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand">
+                        <Image.Source>
+                            <OnPlatform  x:TypeArguments="ImageSource">
+                                <On Platform="Android, iOS" Value="buttonExcluir.png"/>
+                                <On Platform="UWP" Value="Resources/buttonExcluir.png" />
+                            </OnPlatform>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RemoverCurso" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="StackListaVazia">
+                <Label Text="Adicionar Alunos" TextColor="#4b566a"  HorizontalOptions="Center"/>
+                <Label Text="Oops... Você ainda não tem nenhum projeto em andamento." TextColor="#2c4b8e" FontSize="12" HorizontalOptions="Center"/>
+                <Button Clicked="AdicionarAluno" Text="adicionar" TextColor="White" BackgroundColor="#6bcd20" HorizontalOptions="Center"/>
+            </StackLayout>
+            
+            <!--Lista de alunos preenchida-->
+            <StackLayout x:Name="StackListaPreenchida">
+                <ListView x:Name="ListaDeAlunos" ItemSelected="SelecaoAluno">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HeightRequest="50" Margin="5" Orientation="Vertical" BackgroundColor="White">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding nome}" />
+                                        <Label Text=" - " />
+                                        <Label Text="{Binding cpf}" />
+                                    </StackLayout>
+                                    <!--Stack layout que vai aparecer ao clicar no aluno-->
+                                    <StackLayout x:Name="BotoesMenuAluno" IsVisible="False" Orientation="Horizontal">
+                                        <Image HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand">
+                                            <Image.Source>
+                                                <OnPlatform  x:TypeArguments="ImageSource">
+                                                    <On Platform="Android, iOS" Value="buttonEditar.png"/>
+                                                    <On Platform="UWP" Value="Resources/buttonEditar.png" />
+                                                </OnPlatform>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="EditarAluno" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+                                        <Image HeightRequest="110" WidthRequest="110" HorizontalOptions="CenterAndExpand">
+                                            <Image.Source>
+                                                <OnPlatform  x:TypeArguments="ImageSource">
+                                                    <On Platform="Android, iOS" Value="buttonExcluir.png"/>
+                                                    <On Platform="UWP" Value="Resources/buttonExcluir.png" />
+                                                </OnPlatform>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="RemoverAluno" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--Imagem Botão de adicionar aluno-->
+                <Image HeightRequest="50" WidthRequest="50" HorizontalOptions="End">
+                    <Image.Source>
+                        <OnPlatform  x:TypeArguments="ImageSource">
+                            <On Platform="Android, iOS" Value="mais.png"/>
+                            <On Platform="UWP" Value="Resources/mais.png" />
+                        </OnPlatform>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddAluno" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

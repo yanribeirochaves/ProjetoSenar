@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenarDigital.Telas.AdicionarAluno">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#ecf8f7">
+            <!--Achar o codigo hexadecimal de cor compativel-->
+            <Label Text="Adicionar Aluno" TextColor="#4b566a"  HorizontalOptions="Center"/>
+
+            <Label Text="nome" TextColor="#294a8d"  HorizontalOptions="Center"/>
+            <Entry x:Name="NomeAluno" Placeholder="Nome Completo do Aluno" HorizontalTextAlignment="Center" WidthRequest="10" />
+
+            <Label Text="CPF " TextColor="#294a8d" HorizontalOptions="Center"/>
+            <Entry x:Name="CPFAluno" Placeholder="000.000.000-00" HorizontalTextAlignment="Center" WidthRequest="10"/>
+
+            <Button Text="Biometria" TextColor="White" BackgroundColor="#6bcd20" HorizontalOptions="Center"/>
+
+            <Button  Clicked="Enviar" Text="enviar" TextColor="White" BackgroundColor="#6bcd20" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
